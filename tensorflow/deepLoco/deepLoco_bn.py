@@ -45,7 +45,7 @@ class deepLoco_net(object):
         matrix1 = tf.tile(tf.expand_dims(x, 2), [1, 1, 256, 1]) # repeat column
         matrix2 = tf.tile(tf.expand_dims(y, 1), [1, 256, 1, 1])
 
-        return 1/(2*sigma)*tf.exp(-tf.reduce_sum(tf.abs(matrix1-matrix2), 3)/sigma)
+        return tf.exp(-tf.reduce_sum(tf.abs(matrix1-matrix2), 3)/sigma)
 
     def _batch_dot(self, x1, y, x2):
         x1 = tf.tile(tf.expand_dims(x1,2),[1,1,256])
