@@ -39,7 +39,7 @@ def lap_kernel(x,y,sigma):
 
     matrix1 = K.repeat_elements(K.expand_dims(x,2),256,axis=2) # repeat column
     matrix2 = K.repeat_elements(K.expand_dims(y,1),256,axis=1)
-    return 1/(2*sigma)*K.exp(-K.sum(K.abs(matrix1-matrix2), axis=3)/sigma)
+    return K.exp(-K.sum(K.abs(matrix1-matrix2), axis=3)/sigma)
 
 
 def deepLoco_absolute_error(y_true, y_pred):
